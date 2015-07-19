@@ -68,6 +68,7 @@ exports.create = function(req, res){
     	  res.redirect('/quizes');  
   	}); // redireccion a la lista de preguntas 
     }
+  });
 };
 
 // GET /author
