@@ -66,7 +66,7 @@ exports.create = function(req, res){
   	// guardar en BD pregunta y respuesta
   	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
     	  res.redirect('/quizes');  
-  	}) // redireccion a la lista de preguntas 
+  	}); // redireccion a la lista de preguntas 
     }
 };
 
