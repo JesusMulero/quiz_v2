@@ -64,7 +64,7 @@ exports.create = function(req, res){
   .then(
   function(err){
     if (err) {
-      res.render('/quizes/new', {quiz: quiz, errors: err.errors});
+      res.render('quizes/new', {quiz: quiz, errors: err.errors});
     } else {
 		// guardar en BD pregunta y respuesta
 		quiz
