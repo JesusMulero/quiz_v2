@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
+var methodOverride = require('method-override')
 
 var routes = require('./routes/index');
 
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(methodOverride('_method'));
 
 app.use('/', routes);
 
@@ -55,7 +56,7 @@ app.use(function(err, req, res, next) {
     res.render('error', {
         message: err.message,
         error: {},
-	errors: []
+		errors: []
     });
 });
 
