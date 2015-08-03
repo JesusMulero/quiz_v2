@@ -26,6 +26,16 @@ exports.index = function(req, res) {
     ).then(function(quizes) {
       res.render('quizes/index', { quizes: quizes, errors: []});
     }).catch(function(error) { next(error);});
+  } else if (req.query.tema_search){
+	  var search = req.query.tema_search;
+		models.Quiz.findAll(
+      {
+		where: ["tema = ", search],
+		order: [[ 'pregunta', 'ASC']]
+      }
+	).then(function(quizes) {
+      res.render('quizes/index', { quizes: quizes, errors: []});
+    }).catch(function(error) { next(error);});
   } else { 
     models.Quiz.findAll().then(function(quizes) {
       res.render('quizes/index', { quizes: quizes, errors: []});
