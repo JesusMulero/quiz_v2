@@ -30,7 +30,7 @@ exports.index = function(req, res) {
 	  var search = req.query.tema_search;
 		models.Quiz.findAll(
       {
-		where: ["tema = ", search],
+		where: ["tema = ?", search],
 		order: [[ 'pregunta', 'ASC']]
       }
 	).then(function(quizes) {
