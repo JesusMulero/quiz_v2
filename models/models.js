@@ -41,7 +41,7 @@ sequelize.sync().success(function() {
       	            tema: 'Humanidades'
       	         });
       Quiz.create({ pregunta: 'Capital de Portugal',
-                    respuesta: 'Lisboa'
+                    respuesta: 'Lisboa',
       	            tema: 'Humanidades'
                  })
       .then(function(){console.log('Base de datos inicializada')});
