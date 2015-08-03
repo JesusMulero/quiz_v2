@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 	    }
 	    tema: {
 			type: DataTypes.STRING,
+			validate: {notEmpty: {msg: "-> Falta Tema"}}
 		}
 	});
 } 
