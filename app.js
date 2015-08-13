@@ -40,6 +40,24 @@ app.use(function(req, res, next) {
   next();
 });
 
+//Control auto logout
+app.use(function(req, res, next){
+    if(req.session.user){
+        if(req.session.lastTransaction){
+            if((parseInt(Date.now()) - req.session.lastTransaction) > 120000) {
+                delete req.session.user;
+                res.redirect(req.session.redir.toString());
+                delete req.session.lastTransaction;    
+            }else{
+                req.session.lastTransaction = Date.now();
+            }
+        }else{
+            req.session.lastTransaction = Date.now();
+        }
+    }
+    next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
